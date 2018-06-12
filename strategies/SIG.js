@@ -30,13 +30,10 @@ method.check = function() {
     advice = 'long'
   }
 
-  if (advice === this.prevAdvice) {
-    advice = 'same'
-  } else {
+  if (advice !== this.prevAdvice) {
     this.prevAdvice = advice
+    this.advice(advice)
   }
-  
-  this.advice(advice)
 }
 
 module.exports = method;
