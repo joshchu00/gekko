@@ -94,8 +94,9 @@ Actor.prototype.emitAdvice = function(chatId) {
     ' minute candles, is:\n',
   ].join('');
   if (this.advice) {
-    message += this.advice +
-      ' ' +
+    message += '*' +
+      this.advice +
+      '* ' +
       config.watch.asset +
       ' ' +
       this.advicePrice +
