@@ -1,3 +1,5 @@
+var log = require('../core/log');
+
 var method = {};
 
 method.init = function() {
@@ -30,6 +32,8 @@ method.check = function() {
 
   if (advice === this.prevAdvice) {
     advice = 'same'
+  } else {
+    this.prevAdvice = advice
   }
   
   this.advice(advice)
