@@ -17,6 +17,10 @@ RUN npm install --production && \
     npm install --production redis@0.10.0 talib@1.0.2 tulind@0.8.7 pg && \
     npm cache clean --force
 
+# Install telegram
+RUN npm install --production node-telegram-bot-api && \
+    npm cache clean --force
+
 # Bundle app source
 COPY . /usr/src/app
 
