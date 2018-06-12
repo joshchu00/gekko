@@ -108,9 +108,9 @@ Actor.prototype.emitAdvice = function(chatId) {
   }
 
   if (chatId) {
-    this.bot.sendMessage(chatId, message);
+    this.bot.sendMessage(chatId, message, {parse_mode: "Markdown"});
   } else {
-    this.bot.sendMessage(this.chatId, message);
+    this.bot.sendMessage(this.chatId, message, {parse_mode: "Markdown"});
   }
 };
 
