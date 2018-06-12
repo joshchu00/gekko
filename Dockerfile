@@ -22,8 +22,7 @@ COPY . /usr/src/app
 
 EXPOSE 3000
 
-COPY docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
-ENTRYPOINT ["/docker-entrypoint.sh"]
+RUN chmod +x /usr/src/app/docker-entrypoint.sh
+ENTRYPOINT ["/usr/src/app/docker-entrypoint.sh"]
 
 CMD ["--config", "config.js", "--ui"]
