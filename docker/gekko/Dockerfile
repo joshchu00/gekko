@@ -12,16 +12,18 @@ RUN npm install -g --production node-gyp && \
     npm cache clean --force
 
 # Install app dependencies
-COPY package.json /usr/src/app
+COPY ../../package.json /usr/src/app
 RUN npm install --production && \
     npm install --production redis@0.10.0 talib@1.0.2 tulind@0.8.7 pg && \
     npm cache clean --force
 
 # Bundle app source
-COPY . /usr/src/app
+COPY ../../. /usr/src/app
 
 EXPOSE 3000
-RUN chmod +x /usr/src/app/docker-entrypoint.sh
-ENTRYPOINT ["/usr/src/app/docker-entrypoint.sh"]
+
+COPY ../docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD ["--config", "config.js", "--ui"]
