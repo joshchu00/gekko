@@ -1,8 +1,8 @@
 version: '3'
 services:
   gekko:
-    restart: always
     build: ./
+    image: gekko
     volumes:
       - ./volumes/gekko/history:/usr/src/app/history:z
       - ./config:/usr/src/app/config:z
@@ -17,7 +17,20 @@ services:
      - PORT
     ports: # you can comment this out when using the nginx frontend
       - "${PORT}:${PORT}"
-    command: --config config.js
+  gekko-SIG:
+    image: gekko
+    volumes:
+      - ./volumes/gekko/history:/usr/src/app/history:z
+      - ./config:/usr/src/app/config:z
+      - ./strategies:/usr/src/app/strategies:z
+      - ./plugins:/usr/src/app/plugins:z
+      - ./config.js:/usr/src/app/config.js:z
+    links:
+      - redis
+    environment:
+     - HOST
+     - PORT
+    command: --config config-SIG.js
 ## optionally set nginx vars if you wish to frontend it with nginx
 #    environment:
 #     - VIRTUAL_HOST=gekko
